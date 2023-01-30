@@ -22,7 +22,7 @@ const ChatUsers = sequelize.define('chat_users', {
         type: DataTypes.INTEGER,
         references: {
             model: Chat,
-            key: 'id'
+            key: 'id',
         },
         allowNull: false
     },
@@ -48,8 +48,8 @@ User.hasMany(Message, {
 })
 Message.belongsTo(User)
 
-User.belongsToMany(Chat, {through: ChatUsers})
-Chat.belongsToMany(User, {through: ChatUsers})
+User.belongsToMany(Chat, {as: "chats", through: ChatUsers})
+Chat.belongsToMany(User, {as: "members", through: ChatUsers})
 
 
 module.exports = {

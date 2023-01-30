@@ -1,0 +1,12 @@
+.chatAreaWrapper {
+    background: #74B4E0;
+    display: flex;
+}
+
+.sendMessageWrapper {
+    align-self: end;
+    width: 100%;
+}
+
+.chatAreaWrapper__input {
+}
