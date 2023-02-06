@@ -9,6 +9,8 @@ const User = sequelize.define('user', {
 
 const Chat = sequelize.define('chat', {
     id: {type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true},
+    type: {type: DataTypes.STRING, defaultValue: 'CHAT'}, // could be chat or group
+    name: {type: DataTypes.STRING}
 })
 
 const Message = sequelize.define('message', {

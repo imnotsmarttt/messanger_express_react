@@ -2,16 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8e6a200-e418-40c7-bb73-9c0a02425028" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatArea.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatArea.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatAreaContainer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChats.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/store/actions/chat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Auth/AuthContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/ChatItem/ChatItem.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/OnlyAuthComponent/OnlyAuthComponent.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/exceptions/apiError.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/middleware/errorMiddleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Auth/Auth.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Auth/Auth.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Auth/AuthContainer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/Chat.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/Chat.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChats.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChats.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChatsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChatsContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/actions/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/actions/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducers/authReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/controllers/chatController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/chatController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/middleware/authMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middleware/authMiddleware.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routers/chatRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routers/chatRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routers/userRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routers/userRouter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +86,16 @@
       <workItem from="1674804042554" duration="15907000" />
       <workItem from="1674899341737" duration="13470000" />
       <workItem from="1674985300393" duration="10396000" />
+      <workItem from="1675073756611" duration="3021000" />
+      <workItem from="1675158004475" duration="10648000" />
+      <workItem from="1675243589880" duration="4985000" />
+      <workItem from="1675325357645" duration="6203000" />
+      <workItem from="1675350363611" duration="2462000" />
+      <workItem from="1675405745556" duration="1435000" />
+      <workItem from="1675432225966" duration="559000" />
+      <workItem from="1675506067882" duration="589000" />
+      <workItem from="1675581075014" duration="2522000" />
+      <workItem from="1675664651870" duration="631000" />
     </task>
     <servers />
   </component>

@@ -5,7 +5,7 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOAD_USER_SUCCESS,
-    LOAD_USER_FAIL
+    LOAD_USER_FAIL, AUTH_ME, LOGOUT
 } from '../actions/auth'
 
 const initialState = {
@@ -38,6 +38,7 @@ const authReducer = (state = initialState, action) => {
                 password2: ''
             }
         }
+        case LOGOUT:
         case LOGIN_FAIL: {
             localStorage.removeItem('token')
             return {

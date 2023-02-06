@@ -3,7 +3,7 @@ const express = require('express')
 const cors = require('cors')
 const routers = require('./routers/index')
 const sequelize = require('./db')
-const models = require('./models/index')
+const errorMiddleware = require('./middleware/errorMiddleware')
 
 const PORT = process.env.PORT
 const app = express()
@@ -11,6 +11,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use('/api', routers)
+app.use(errorMiddleware)
 
 
 const start = async () => {

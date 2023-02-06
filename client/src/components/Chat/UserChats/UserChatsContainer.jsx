@@ -1,16 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import UserChats from "./UserChats";
 import {connect} from "react-redux";
 import {fetchMyChats} from "../../../store/actions/chat";
 
-class UserChatsContainer extends React.Component {
-    componentDidMount() {
-        this.props.fetchMyChats()
-    }
+const UserChatsContainer = (props) => {
+    useEffect(() => {
+        props.fetchMyChats()
+    }, [])
 
-    render() {
-        return <UserChats myChats={this.props.chats} />
-    }
+    return <UserChats myChats={props.chats} />
 }
 
 

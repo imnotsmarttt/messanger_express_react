@@ -1,18 +1,12 @@
 import s from './UserChats.module.css'
-import {Link} from "react-router-dom";
+import ChatItem from "./ChatItem/ChatItem";
+
 
 const UserChats = (props) => {
-
     const userChats = props.myChats.map(chat => {
-        return chat ? (
-            <Link to={`${chat.id}`} className={s.chatItem}>
-                <div className={s.chatItem__photo}></div>
-                <div className={s.chatItem__info}>
-                    <h6 className={s.chatItem__info__username}>{chat.members[0].username}</h6>
-                    <p className={s.chatItem__info__lastMessage}>{chat.messages[0] ? chat.messages[0].message : ''}</p>
-                </div>
-            </Link>
-        ) : null
+        return <ChatItem key={chat.id} id={chat.id}
+                         username={chat.members[0].username}
+                         lastMessage={chat.messages[0].message}/>
     })
 
     return (
