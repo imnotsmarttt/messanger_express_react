@@ -1,6 +1,12 @@
 const {Chat, User, Message} = require('../models/index')
 const ApiError = require('../exceptions/apiError')
-const {Op} = require('sequelize')
+const {
+    fetchChatByUsers,
+    fetchChatById,
+    createChat,
+    sendMessage,
+    checkIfUserInChat
+} = require('../services/chat')
 
 
 class ChatController {
@@ -14,15 +20,19 @@ class ChatController {
         return res.send(chat)
     }
 
-    async inviteMemberToChat(req, res) {
+    async inviteMemberToChat(req, res, next) {
         const {chatId, userId} = req.body
         const chat = await Chat.findByPk(chatId)
         const user = await User.findByPk(userId)
         if (!chat) {
-            return ApiError.BadRequestError('Chat is not exist!')
+            return next(ApiError.BadRequestError('Chat is not exist!'))
         }
         if (!user) {
-            return ApiError.BadRequestError('User is not exist!')
+            return next(ApiError.BadRequestError('User is not exist!'))
+        }
+        const userInChat = await checkIfUserInChat(chatId, req.user.id)
+        if (!userInChat) {
+            return next(ApiError.BadRequestError('User not in chat'))
         }
         await chat.addMembers(user)
         return res.json({chat})
@@ -32,65 +42,33 @@ class ChatController {
 
     }
 
-    async get(req, res) {
-        const {userId} = req.body
-        const response = await User.findByPk(req.user.id,
-            {
-                include: {
-                    model: Chat,
-                    as: 'chats',
-                    through: {attributes: []},
-                    include: [
-                        {
-                            model: User,
-                            as: 'members',
-                            through: {attributes: []},
-                            attributes: ['id', 'username'],
-                        },
-                        {
-                            model: Message,
-                            include: {
-                                model: User,
-                                attributes: ['username'],
-                            },
-                            order: [['createdAt', 'DESC']],
-                            limit: 1,
-                            attributes: ['id', 'message', 'createdAt', 'userId']
-                        }
-                    ]
-                }
-            }
-        )
-        const chat = response.chats.filter(chat => {
-            const user = chat.members.find(user => user.id === userId)
-            return user ? chat : null
-        })
+    async get(req, res, next) {
+        const userId1 = req.body.userId
+        const userId2 = req.user.id
+        const chat = await fetchChatByUsers(userId1, userId2)
         if (chat.length <= 0) {
-            const user1 = await User.findByPk(userId)
-            const user2 = await User.findByPk(req.user.id)
-            const chat = await Chat.create()
-
-            await chat.addMembers([user1, user2])
-            return res.send(chat)
+            await createChat(userId1, userId2)
+            const chat = await fetchChatByUsers(userId1, userId2)
+            return res.json({chat})
         }
-        return res.json(chat)
+        return res.json({chat})
     }
 
-    async sendMessage(req, res) {
+    async getById(req, res, next) {
+        const {id} = req.params
+        const chat = await fetchChatById(id)
+        return res.json({chat})
+    }
+
+    async sendMessage(req, res, next) {
         const {chatId, message} = req.body
         const userId = req.user.id
-        const messageData = await Message.create({message, chatId, userId})
-        const user = await messageData.getUser({
-            attributes: ['id', 'username']
-        })
-        const response = {
-            messageData: {
-                id: messageData.id,
-                message: messageData.message,
-                user
-            }
+        const userInChat = await checkIfUserInChat(chatId, userId)
+        if (!userInChat) {
+            return next(ApiError.BadRequestError('User not in chat'))
         }
-        return res.json({messageData: response.messageData})
+        const messageData = await sendMessage(message, chatId, userId)
+        return res.json({messageData})
     }
 
     async deleteMessage(req, res) {

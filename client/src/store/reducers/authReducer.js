@@ -3,15 +3,13 @@ import {
     CHANGE_PASSWORD_VALUE,
     CHANGE_PASSWORD2_VALUE,
     LOGIN_SUCCESS,
-    LOGIN_FAIL,
-    LOAD_USER_SUCCESS,
-    LOAD_USER_FAIL, AUTH_ME, LOGOUT
+    LOGOUT
 } from '../actions/auth'
 
 const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: localStorage.getItem('token') ? true : false,
-    user: null,
+    user: localStorage.getItem('user'),
     username: '',
     password: '',
     password2: ''
@@ -30,6 +28,8 @@ const authReducer = (state = initialState, action) => {
         }
         case LOGIN_SUCCESS: {
             localStorage.setItem('token', action.token)
+            localStorage.setItem('user', JSON.stringify(action.user))
+
             return {
                 ...state,
                 isAuthenticated: true,
@@ -38,27 +38,15 @@ const authReducer = (state = initialState, action) => {
                 password2: ''
             }
         }
-        case LOGOUT:
-        case LOGIN_FAIL: {
+        case LOGOUT: {
             localStorage.removeItem('token')
+            localStorage.removeItem('user')
             return {
                 ...state,
                 isAuthenticated: false,
                 username: '',
                 password: '',
                 password2: ''
-            }
-        }
-        case LOAD_USER_SUCCESS: {
-            return {
-                ...state,
-                user: action.user
-            }
-        }
-        case LOAD_USER_FAIL: {
-            return {
-                ...state,
-                user: null
             }
         }
         default:

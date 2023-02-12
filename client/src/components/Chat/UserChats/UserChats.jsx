@@ -6,7 +6,7 @@ const UserChats = (props) => {
     const userChats = props.myChats.map(chat => {
         return <ChatItem key={chat.id} id={chat.id}
                          username={chat.members[0].username}
-                         lastMessage={chat.messages[0].message}/>
+                         lastMessage={chat.messages[0].message} type={chat.type}/>
     })
 
     return (

@@ -8,13 +8,13 @@ const UserChatsContainer = (props) => {
         props.fetchMyChats()
     }, [])
 
-    return <UserChats myChats={props.chats} />
+    return <UserChats myChats={props.myChats} />
 }
 
 
 const mapStateToProps = (store) => {
     return {
-        chats: store.chat.chats
+        myChats: store.chat.myChats
     }
 }
 

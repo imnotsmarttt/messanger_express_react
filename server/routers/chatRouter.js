@@ -9,7 +9,9 @@ router.post('/create', authMiddleware, chatController.create)
 router.post('/invite', authMiddleware, chatController.inviteMemberToChat)
 router.get('/my', authMiddleware, chatController.getMyChats)
 router.post('/message', authMiddleware, chatController.sendMessage)
+router.get('/:id', authMiddleware, chatController.getById)
 router.get('/', authMiddleware, chatController.get)
+
 
 
 

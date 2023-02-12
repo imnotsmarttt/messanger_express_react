@@ -1,14 +1,16 @@
 import './App.css';
-import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {useEffect} from "react";
+import {connect} from "react-redux";
+import {checkAuth} from "./store/actions/auth";
+
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
 import AuthContainer from "./components/Auth/AuthContainer";
 import ChatAreaContainer from "./components/Chat/ChatArea/ChatAreaContainer";
 import ChatContainer from "./components/Chat/ChatContainer";
-import {useEffect} from "react";
-import {connect} from "react-redux";
-import {checkAuth} from "./store/actions/auth";
 import OnlyAuthComponent from "./components/OnlyAuthComponent/OnlyAuthComponent";
+
 
 function App(props) {
 

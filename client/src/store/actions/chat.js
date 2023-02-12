@@ -5,6 +5,7 @@ export const GET_CHAT = 'GET_CHAT'
 
 export const CHANGE_MESSAGE_VALUE = 'CHANGE_MESSAGE_VALUE'
 export const SEND_MESSAGE = 'SEND_MESSAGE'
+export const SET_MESSAGE = 'SET_MESSAGE'
 
 export const changeMessageValue = (message) => {
     return {type: CHANGE_MESSAGE_VALUE, message: message}
@@ -40,6 +41,15 @@ export const getChat = (chatId) => async dispatch => {
     }
 }
 
+export const setMessage = (id, message, createdAt, user) => {
+    const messageData = {
+        id,
+        message,
+        createdAt,
+        user
+    }
+    return {type: SET_MESSAGE, message: messageData}
+}
 
 export const sendMessage = (chatId, message) => async dispatch => {
     const config = {
@@ -55,6 +65,7 @@ export const sendMessage = (chatId, message) => async dispatch => {
     try {
         const response = await axios.post(`${process.env.REACT_APP_API_URL}/chat/message`, data, config)
         dispatch({type: SEND_MESSAGE, message: response.data.messageData})
+        return response.data
     } catch (e) {
         console.log(e)
     }
