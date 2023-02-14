@@ -31,7 +31,7 @@ class UserController {
         return res.json({token})
     }
 
-    async login(req, res) {
+    async login(req, res, next) {
         const {username, password} = req.body
         if (!username || !password) {
             return next(ApiError.BadRequestError('Please fill all fields!'))

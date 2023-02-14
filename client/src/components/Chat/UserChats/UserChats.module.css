@@ -1,5 +1,5 @@
 .searchWrapper {
-    height: 42px;
+    height: 89px;
     background: #707070;
 }
 
@@ -7,51 +7,8 @@
 
 }
 
-.chatItem {
-    width: 100%;
-    height: 69px;
-
-    display: flex;
-}
-
-.chatItem:hover {
-    background: #F3F3F3;
-}
-
-.chatItem__photo {
-    margin-left: 29px;
-    width: 57px;
-    height: 57px;
-    background: black;
-    border-radius: 29px;
-   align-self: center;
-}
-
-.chatItem__info {
-    margin: 0 0 0 15px;
-    width: 190px;
-    max-width: 190px;
-}
-
-.chatItem__info__username {
-    margin: 10px 0 0 0;
-
-    text-align: start;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-
-    color: #000000;
-}
-
-.chatItem__info__lastMessage {
-    margin: 3px 0 0 0;
-
-    text-align: start;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 15px;
-
-    color: #545454;
+.chatListWrapper {
+    z-index: 1;
+    box-shadow: 4px 0 3px -3px rgba(0, 0, 0, 0.25);
 }
 

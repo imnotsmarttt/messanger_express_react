@@ -1,0 +1,42 @@
+
+
+.messageWrapper {
+    height: fit-content;
+    background: #FFFFFF;
+    position: relative;
+    width: fit-content;
+    border-radius: 13px;
+}
+
+.messageText {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #000000;
+
+    padding: 14px 53px 14px 21px;
+    margin: 0 0 10px 0;
+}
+
+.messageCreated {
+    margin: 0;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+
+    color: #999999;
+
+    position: absolute;
+    bottom: 7px;
+    right: 11px;
+}
+
+.myMessage {
+    margin-left: auto;
+    background: #D1F2FF;
+}
+
+.messageWrapper:last-child {
+    background: #B1B1B1;
+}

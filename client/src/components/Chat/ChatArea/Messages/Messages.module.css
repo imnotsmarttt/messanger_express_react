@@ -1,0 +1,33 @@
+/*Messages*/
+.messagesWrapper {
+    grid-area: messages;
+    background: #74B4E0;
+    display: flex;
+    width: 100vh;
+    overflow-y: scroll;
+}
+
+.messages {
+    padding: 30px 51px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.messagesWrapper::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.messagesWrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.messagesWrapper::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.messagesWrapper::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

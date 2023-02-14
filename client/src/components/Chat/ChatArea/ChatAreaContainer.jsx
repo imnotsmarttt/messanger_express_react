@@ -1,10 +1,9 @@
 import React, {useEffect} from "react";
-import ChatArea from "./ChatArea";
 import {connect} from "react-redux";
-import {changeMessageValue, getChat, sendMessage, setMessage} from "../../../store/actions/chat";
 import {useParams} from "react-router-dom";
-
 import io from 'socket.io-client';
+import {changeMessageValue, getChat, sendMessage, setMessage} from "../../../store/actions/chat";
+import ChatArea from "./ChatArea";
 
 const socket = io.connect("http://localhost:8000", {transports: ['websocket', 'polling', 'flashsocket']});
 
@@ -16,7 +15,7 @@ const ChatAreaContainer = (props) => {
         socket.on('connect')
         socket.emit('join_room', id)
         socket.on('message_receive', (data) => {
-            props.setMessage(data.messageId, data.message, data.createdAt, data.user)
+            props.setMessage(data.messageId, data.message, data.createdAt, data.user, data.chatId)
         })
 
         return () => {
@@ -24,16 +23,25 @@ const ChatAreaContainer = (props) => {
             socket.off('join_room')
             socket.off('message_receive')
         }
-    }, [id])
+    }, [id, socket])
+
+    const sendMessage = async () => {
+        const createdMessage = await props.sendMessage(id, props.messageValue)
+        socket.emit('message_create', {
+                chatId: id,
+                messageId: createdMessage.messageData.id,
+                message: createdMessage.messageData.message,
+                createdAt: createdMessage.messageData.createdAt,
+                user: createdMessage.messageData.user
+            }
+        )
+    }
 
     return (
-        <>
-        <ChatArea id={id} socket={socket} user={props.user}
+        <ChatArea id={id} user={props.user}
                   messageValue={props.messageValue} changeMessageValue={props.changeMessageValue}
-                  messages={props.messages} sendMessage={props.sendMessage} setMessage={props.setMessage}
-                  getCurrentUser={props.getCurrentUser}
+                  messages={props.messages} sendMessage={sendMessage}
         />
-        </>
     );
 }
 

@@ -8,12 +8,13 @@ const UserChatsContainer = (props) => {
         props.fetchMyChats()
     }, [])
 
-    return <UserChats myChats={props.myChats} />
+    return <UserChats myChats={props.myChats} currentUsername={JSON.parse(props.currentUser).username}/>
 }
 
 
 const mapStateToProps = (store) => {
     return {
+        currentUser: store.auth.user,
         myChats: store.chat.myChats
     }
 }

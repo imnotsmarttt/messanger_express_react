@@ -57,10 +57,12 @@ const fetchChatById = async (chatId) => {
                         model: User,
                         attributes: ['id', 'username'],
                     },
-                    order: [['createdAt', 'DESC']],
-                    attributes: ['id', 'message', 'createdAt']
+                    attributes: ['id', 'message', 'createdAt'],
                 }
-            ]
+            ],
+        order: [
+            [Message, 'createdAt']
+        ]
         }
     )
     return response

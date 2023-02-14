@@ -11,7 +11,7 @@ export const changeMessageValue = (message) => {
     return {type: CHANGE_MESSAGE_VALUE, message: message}
 }
 
-export const fetchMyChats = () => async dispatch => {
+export const fetchMyChats = () => async (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -41,14 +41,14 @@ export const getChat = (chatId) => async dispatch => {
     }
 }
 
-export const setMessage = (id, message, createdAt, user) => {
+export const setMessage = (id, message, createdAt, user, chatId) => {
     const messageData = {
         id,
         message,
         createdAt,
         user
     }
-    return {type: SET_MESSAGE, message: messageData}
+    return {type: SET_MESSAGE, message: messageData, chatId}
 }
 
 export const sendMessage = (chatId, message) => async dispatch => {
@@ -64,7 +64,7 @@ export const sendMessage = (chatId, message) => async dispatch => {
     }
     try {
         const response = await axios.post(`${process.env.REACT_APP_API_URL}/chat/message`, data, config)
-        dispatch({type: SEND_MESSAGE, message: response.data.messageData})
+        dispatch({type: SEND_MESSAGE, message: response.data.messageData, chatId: chatId})
         return response.data
     } catch (e) {
         console.log(e)

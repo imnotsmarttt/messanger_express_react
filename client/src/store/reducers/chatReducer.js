@@ -14,7 +14,7 @@ const initialStore = {
     message: ''
 }
 
-const chatReducer = (store=initialStore, action) => {
+const chatReducer = (store = initialStore, action) => {
     switch (action.type) {
         case CHANGE_MESSAGE_VALUE: {
             return {
@@ -36,24 +36,31 @@ const chatReducer = (store=initialStore, action) => {
         }
         case SEND_MESSAGE: {
             const storeCopy = {
-                ...store, currentChat: {
+                ...store,
+                currentChat: {
                     messages: [...store.currentChat.messages]
-                }
+                },
+                myChats: [...store.myChats],
             }
+            storeCopy.myChats.find(chat => chat.id === parseInt(action.chatId)).messages = [action.message]
             storeCopy.currentChat.messages.push(action.message)
             storeCopy.message = ''
             return storeCopy
         }
         case SET_MESSAGE: {
             const storeCopy = {
-                ...store, currentChat: {
-                    messages: [...store.currentChat.messages]
-                }
+                ...store,
+                currentChat: {
+                    messages: [...store.currentChat.messages],
+                },
+                myChats: [...store.myChats],
             }
+            storeCopy.myChats.find(chat => chat.id === parseInt(action.chatId)).messages = [action.message]
             storeCopy.currentChat.messages.push(action.message)
             return storeCopy
         }
-        default: return store
+        default:
+            return store
     }
 }
 

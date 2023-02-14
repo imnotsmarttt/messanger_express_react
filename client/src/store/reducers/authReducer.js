@@ -32,6 +32,8 @@ const authReducer = (state = initialState, action) => {
 
             return {
                 ...state,
+                token: action.token,
+                user: JSON.stringify(action.user),
                 isAuthenticated: true,
                 username: '',
                 password: '',
@@ -43,6 +45,8 @@ const authReducer = (state = initialState, action) => {
             localStorage.removeItem('user')
             return {
                 ...state,
+                token: null,
+                user: null,
                 isAuthenticated: false,
                 username: '',
                 password: '',

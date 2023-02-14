@@ -35,6 +35,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('message_create', (data) => {
+
         socket.to(data.chatId).emit('message_receive', data)
     });
 });
