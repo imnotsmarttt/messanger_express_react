@@ -1,13 +1,5 @@
 const {User, Chat, Message} = require("../models/index");
 
-
-const checkIfUserInChat = async (chatId, userId) => {
-    const chat = await Chat.findByPk(chatId)
-    const chatUsers = await chat.getMembers()
-    const user = chatUsers.find(user => user.id == userId)
-    return user ? true : false
-}
-
 const fetchChatByUsers = async (userId1, userId2) => {
     const response = await User.findByPk(userId1,
         {
@@ -44,27 +36,26 @@ const fetchChatByUsers = async (userId1, userId2) => {
 
 const fetchChatById = async (chatId) => {
     const response = await Chat.findByPk(chatId, {
-            include: [
-                {
+        include: [
+            {
+                model: User,
+                as: 'members',
+                through: {attributes: []},
+                attributes: ['id', 'username'],
+            },
+            {
+                model: Message,
+                include: {
                     model: User,
-                    as: 'members',
-                    through: {attributes: []},
                     attributes: ['id', 'username'],
                 },
-                {
-                    model: Message,
-                    include: {
-                        model: User,
-                        attributes: ['id', 'username'],
-                    },
-                    attributes: ['id', 'message', 'createdAt'],
-                }
-            ],
+                attributes: ['id', 'message', 'createdAt'],
+            }
+        ],
         order: [
             [Message, 'createdAt']
         ]
-        }
-    )
+    })
     return response
 }
 
@@ -91,10 +82,41 @@ const sendMessage = async (message, chatId, userId) => {
     return messageData
 }
 
+const getMyChats = async (id) => {
+    const response = await User.findByPk(id,
+        {
+            include: {
+                model: Chat,
+                as: 'chats',
+                through: {attributes: []},
+                include: [
+                    {
+                        model: User,
+                        as: 'members',
+                        through: {attributes: []},
+                        attributes: ['id', 'username'],
+                    },
+                    {
+                        model: Message,
+                        include: {
+                            model: User,
+                            attributes: ['username'],
+                        },
+                        order: [['createdAt', 'DESC']],
+                        limit: 1,
+                        attributes: ['id', 'message', 'createdAt', 'userId']
+                    }
+                ]
+            }
+        }
+    )
+    return response.chats.filter(o => o.messages.length !== 0)
+}
+
 module.exports = {
     fetchChatByUsers,
     fetchChatById,
     createChat,
     sendMessage,
-    checkIfUserInChat,
+    getMyChats
 }

@@ -2,30 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8e6a200-e418-40c7-bb73-9c0a02425028" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatInfo/ChatInfo.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatInfo/ChatInfo.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/InputMessage/InputMessage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/InputMessage/InputMessage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/Messages/Message/Message.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/Messages/Message/Message.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/Messages/Messages.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/Messages/Messages.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/ChatItem/ChatItem.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/scripts/scripts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/middleware/chatMiddleware.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatArea.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatArea.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatArea.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatArea.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatAreaContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatAreaContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/Message/Message.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/UserChats/ChatItem/ChatItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/ChatItem/ChatItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChats.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChats.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChats.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChats.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChatsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChatsContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/actions/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/actions/chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducers/authReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/reducers/chatReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducers/chatReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/chatController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/chatController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routers/chatRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routers/chatRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/services/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/services/chat.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +37,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/it/Projects/js/my-app",
+    "last_opened_file_path": "C:/it/Projects/express_react_messanger",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.general",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
@@ -111,7 +91,8 @@
       <workItem from="1676125976476" duration="4573000" />
       <workItem from="1676187564657" duration="4045000" />
       <workItem from="1676272169365" duration="8903000" />
-      <workItem from="1676359422242" duration="12983000" />
+      <workItem from="1676359422242" duration="13124000" />
+      <workItem from="1676444906717" duration="5123000" />
     </task>
     <servers />
   </component>
