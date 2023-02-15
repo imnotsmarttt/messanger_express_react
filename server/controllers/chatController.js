@@ -1,11 +1,12 @@
-const {Chat, User} = require('../models/index')
+const {Chat, User, Message} = require('../models/index')
 const ApiError = require('../exceptions/apiError')
 const {
     fetchChatByUsers,
     fetchChatById,
     createChat,
     sendMessage,
-    getMyChats
+    getMyChats,
+    editMessage
 } = require('../services/chat')
 
 
@@ -34,11 +35,11 @@ class ChatController {
         return res.json({chat})
     }
 
-    async delete(req, res) {
+    async deleteChat(req, res) {
 
     }
 
-    async get(req, res, next) {
+    async getOrCreateChat(req, res) {
         const userId1 = req.body.userId
         const userId2 = req.user.id
         const chat = await fetchChatByUsers(userId1, userId2)
@@ -50,23 +51,33 @@ class ChatController {
         return res.json({chat})
     }
 
-    async getById(req, res, next) {
+    async getChatById(req, res) {
         const {id} = req.params
-        await checkIfUserInChat(id, req.user.id, next)
         const chat = await fetchChatById(id)
 
         return res.json({chat})
     }
 
-    async sendMessage(req, res, next) {
+    async sendMessage(req, res) {
         const {chatId, message} = req.body
         const userId = req.user.id
         const messageData = await sendMessage(message, chatId, userId)
         return res.json({messageData})
     }
 
-    async deleteMessage(req, res) {
+    async deleteMessage(req, res,) {
+        const {messageId} = req.params
+        await Message.destroy({
+            where: {id: messageId}
+        })
+        return res.json({success: "message deleted"})
+    }
 
+    async editMessage(req, res) {
+        const {messageId} = req.params
+        const newMessage = req.body.newMessage
+        const messageData = await editMessage(messageId, newMessage)
+        return res.json({messageData})
     }
 
     async getMyChats(req, res) {
