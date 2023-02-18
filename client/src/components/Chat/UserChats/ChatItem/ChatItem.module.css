@@ -3,6 +3,7 @@
     height: 69px;
 
     display: flex;
+    text-decoration: none;
 }
 
 .activeLink {
@@ -48,4 +49,15 @@
     line-height: 15px;
 
     color: #545454;
+}
+
+.chatItem__info__lastMessage_createdAt {
+    margin: 3px 0 0 0;
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: start;
+
+    color: #8A8A8A;
+
 }

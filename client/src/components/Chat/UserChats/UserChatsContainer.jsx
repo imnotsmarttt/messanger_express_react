@@ -1,22 +1,30 @@
 import React, {useEffect} from "react";
 import UserChats from "./UserChats";
 import {connect} from "react-redux";
-import {fetchMyChats} from "../../../store/actions/chat";
+import {changeSearchValue, fetchMyChats, searchUserOrGroup} from "../../../store/actions/chat";
 
 const UserChatsContainer = (props) => {
     useEffect(() => {
-        props.fetchMyChats()
-    }, [])
+        if (props.searchValue !== '') {
+            props.searchUserOrGroup(props.searchValue)
+        } else {
+            props.fetchMyChats()
+        }
 
-    return <UserChats myChats={props.myChats} currentUsername={JSON.parse(props.currentUser).username}/>
+    }, [props.searchValue])
+
+    return <UserChats myChats={props.myChats} currentUsername={JSON.parse(props.currentUser).username}
+                      searchValue={props.searchValue} search={props.searchUserOrGroup} changeSearchValue={props.changeSearchValue}
+    />
 }
 
 
 const mapStateToProps = (store) => {
     return {
         currentUser: store.auth.user,
-        myChats: store.chat.myChats
+        myChats: store.chat.myChats,
+        searchValue: store.chat.searchValue
     }
 }
 
-export default connect(mapStateToProps, {fetchMyChats})(UserChatsContainer)
+export default connect(mapStateToProps, {fetchMyChats, searchUserOrGroup, changeSearchValue})(UserChatsContainer)

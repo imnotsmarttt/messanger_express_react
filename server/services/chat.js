@@ -28,7 +28,7 @@ const getMyChats = async (id) => {
             }
         }
     )
-    return response.chats.filter(o => o.messages.length !== 0)
+    return response.chats.filter(o => o.messages.length !== 0 || o.type == "GROUP")
 }
 
 const fetchChatByUsers = async (userId1, userId2) => {

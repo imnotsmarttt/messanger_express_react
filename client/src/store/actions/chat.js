@@ -7,8 +7,16 @@ export const CHANGE_MESSAGE_VALUE = 'CHANGE_MESSAGE_VALUE'
 export const SEND_MESSAGE = 'SEND_MESSAGE'
 export const SET_MESSAGE = 'SET_MESSAGE'
 
+export const MY_CHAT_TEST = 'MY_CHAT_TEST'
+
+export const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE'
+
 export const changeMessageValue = (message) => {
     return {type: CHANGE_MESSAGE_VALUE, message: message}
+}
+
+export const changeSearchValue = (value) => {
+    return {type: CHANGE_SEARCH_VALUE, value}
 }
 
 export const fetchMyChats = () => async (dispatch) => {
@@ -70,4 +78,20 @@ export const sendMessage = (chatId, message) => async dispatch => {
         console.log(e)
     }
 }
+
+export const searchUserOrGroup = (query) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    }
+    try {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/chat/search?q=${query}`, config)
+        dispatch ({type: FETCH_MY_CHATS, chats: response.data.result})
+    } catch (e) {
+
+    }
+}
+
 

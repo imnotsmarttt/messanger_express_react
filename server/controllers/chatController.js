@@ -8,7 +8,7 @@ const {
     getMyChats,
     editMessage
 } = require('../services/chat')
-
+const {Op} = require('sequelize')
 
 class ChatController {
     async create(req, res) {
@@ -21,7 +21,7 @@ class ChatController {
         return res.json({chat})
     }
 
-    async inviteMemberToChat(req, res, next) {
+    async inviteMemberToGroup(req, res, next) {
         const {chatId, userId} = req.body
         const chat = await Chat.findByPk(chatId)
         const user = await User.findByPk(userId)
@@ -49,6 +49,55 @@ class ChatController {
             return res.json({chat})
         }
         return res.json({chat})
+    }
+
+    async createGroup(req, res, next) {
+        const {groupName, users} = req.body
+        const g = await Chat.findOne({
+            where: {name: groupName}
+        })
+        if (g) {
+            return next(ApiError.BadRequestError('Group with this name exist'))
+        }
+        const group = await Chat.create({type: "GROUP", name: groupName})
+        const admin = await User.findByPk(req.user.id)
+        await group.addMembers(admin)
+        for (const user of users) {
+            const u = await User.findByPk(user.id)
+            if (u) {
+                await group.addMembers(u)
+            }
+        }
+        return res.json(group)
+    }
+
+    async findChatOrGroup(req, res) {
+        const query = req.query.q
+        const users = await User.findAll({
+            where: {
+                username: {[Op.iLike]: `${query}%`},
+            },
+            attributes: ['id', 'username']
+        })
+        const groups = await Chat.findAll({
+            where: {
+                type: 'GROUP',
+                name: {[Op.iLike]: `${query}%`}
+            },
+            attributes: ['id', 'type', 'name'],
+            include: {
+                model: Message,
+                include: {
+                    model: User,
+                    attributes: ['username'],
+                },
+                order: [['createdAt', 'DESC']],
+                limit: 1,
+                attributes: ['id', 'message', 'createdAt', 'userId']
+            }
+        })
+        const result = [...users, ...groups]
+        return res.json({result})
     }
 
     async getChatById(req, res) {

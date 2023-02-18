@@ -3,7 +3,8 @@ import {
     CHANGE_MESSAGE_VALUE,
     GET_CHAT,
     SEND_MESSAGE,
-    SET_MESSAGE
+    SET_MESSAGE,
+    CHANGE_SEARCH_VALUE,
 } from '../actions/chat'
 
 const initialStore = {
@@ -11,7 +12,8 @@ const initialStore = {
     currentChat: {
         messages: []
     },
-    message: ''
+    message: '',
+    searchValue: ''
 }
 
 const chatReducer = (store = initialStore, action) => {
@@ -35,6 +37,7 @@ const chatReducer = (store = initialStore, action) => {
             }
         }
         case SEND_MESSAGE: {
+            debugger
             const storeCopy = {
                 ...store,
                 currentChat: {
@@ -42,8 +45,8 @@ const chatReducer = (store = initialStore, action) => {
                 },
                 myChats: [...store.myChats],
             }
-            storeCopy.myChats.find(chat => chat.id === parseInt(action.chatId)).messages = [action.message]
             storeCopy.currentChat.messages.push(action.message)
+            storeCopy.myChats.find(chat => chat.id === parseInt(action.chatId)).messages = [action.message]
             storeCopy.message = ''
             return storeCopy
         }
@@ -58,6 +61,9 @@ const chatReducer = (store = initialStore, action) => {
             storeCopy.myChats.find(chat => chat.id === parseInt(action.chatId)).messages = [action.message]
             storeCopy.currentChat.messages.push(action.message)
             return storeCopy
+        }
+        case CHANGE_SEARCH_VALUE: {
+            return {...store, searchValue: action.value}
         }
         default:
             return store
