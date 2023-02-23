@@ -3,16 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c8e6a200-e418-40c7-bb73-9c0a02425028" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/UserChats/ChatItem/ChatItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/ChatItem/ChatItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/UserChats/ChatItem/ChatItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/ChatItem/ChatItem.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChats.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChats.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChats.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChats.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChatsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/UserChats/UserChatsContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/actions/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/actions/chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/reducers/chatReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/reducers/chatReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/chatController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/chatController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routers/chatRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routers/chatRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/services/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/services/chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatAreaContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/ChatAreaContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/Messages/Message/Message.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Chat/ChatArea/Messages/Message/Message.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +95,8 @@
       <workItem from="1676531539849" duration="4023000" />
       <workItem from="1676542018203" duration="2060000" />
       <workItem from="1676620333519" duration="1113000" />
-      <workItem from="1676710899785" duration="779000" />
+      <workItem from="1676710899785" duration="1456000" />
+      <workItem from="1677143875014" duration="2136000" />
     </task>
     <servers />
   </component>

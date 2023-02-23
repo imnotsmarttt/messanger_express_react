@@ -19,7 +19,7 @@ const ChatAreaContainer = (props) => {
         })
 
         return () => {
-            socket.on('disconnect', id)
+            socket.emit('leave_room', id)
             socket.off('join_room')
             socket.off('message_receive')
         }

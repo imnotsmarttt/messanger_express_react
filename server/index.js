@@ -25,14 +25,17 @@ app.use(errorMiddleware)
 
 io.on('connection', (socket) => {
     console.log('user connected to ' + socket.id)
-    socket.on('disconnect', (chatId) => {
-        console.log('Disconnected - '+ chatId);
+    socket.on('disconnect', () => {
+        console.log('Disconnected');
     });
 
     socket.on('join_room', (chatId) => {
        socket.join(chatId)
-        console.log(`user joined to ${chatId}`)
     });
+
+    socket.on('leave_room', (chatId) => {
+        socket.leave(chatId)
+    })
 
     socket.on('message_create', (data) => {
 

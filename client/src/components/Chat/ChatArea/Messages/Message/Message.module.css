@@ -17,6 +17,10 @@
 
     padding: 14px 53px 14px 21px;
     margin: 0 0 10px 0;
+    width: fit-content;
+    max-width: 475px;
+    word-wrap: break-word;
+    text-align: start;
 }
 
 .messageCreated {
